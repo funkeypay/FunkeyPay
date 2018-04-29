@@ -159,14 +159,20 @@ contract FunkeyCoinBase is ERC20Interface, Lockable {
         return true;
     }
 
-    function approve(address spender, uint tokens) public returns (bool success) {
+    function approve(address spender, uint tokens)
+    CheckAllLock
+    CheckLockAddress
+    public returns (bool success) {
         _allowed[msg.sender][spender] = tokens;
 
         emit Approval(msg.sender, spender, tokens);
         return true;
     }
 
-    function transferFrom(address from, address to, uint tokens) public returns (bool success) {
+    function transferFrom(address from, address to, uint tokens)
+    CheckAllLock
+    CheckLockAddress
+    public returns (bool success) {
         require(tokens <= _balances[from]);
         require(tokens <= _allowed[from][msg.sender]);
         
@@ -180,7 +186,7 @@ contract FunkeyCoinBase is ERC20Interface, Lockable {
 }
 // ----------------------------------------------------------------------------
 // @Name FunkeyCoin (FNK)
-// @Desc Funkey Coin
+// @Desc Funkey Admin Ryu
 // ----------------------------------------------------------------------------
 contract FunkeyCoin is FunkeyCoinBase {
     string  public   name;
