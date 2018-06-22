@@ -11,7 +11,7 @@ import "../ERC20/BurnableToken.sol";
 import "../ERC20/MultiTransferToken.sol";
 
 contract FunkeyCoin is PausableToken, MintableToken, BurnableToken, MultiTransferToken {
-  string public name = "FunkeyCoin";
-  string public symbol = "FKC";
-  uint256 public decimals = 18;
+    string public name = "FunkeyCoin";
+    string public symbol = "FKC";
+    uint256 public decimals = 18;
 }
