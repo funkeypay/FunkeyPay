@@ -23,8 +23,7 @@ contract BlackList is Ownable {
         _;
     }
 
-    // Lock Address
-    function SetLockAddress(address _lockAddress) external onlyOwner returns (bool) {
+    function SetLockAddress(address _lockAddress) external onlyOwnerOrOperator returns (bool) {
         require(_lockAddress != address(0));
         require(_lockAddress != owner);
         require(blackList[_lockAddress] != true);
@@ -37,8 +36,6 @@ contract BlackList is Ownable {
     }
 
     function UnLockAddress(address _unlockAddress) external onlyOwner returns (bool) {
-        require(_unlockAddress != address(0));
-        require(_unlockAddress != owner);
         require(blackList[_unlockAddress] != false);
         
         blackList[_unlockAddress] = false;
