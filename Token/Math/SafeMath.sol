@@ -3,10 +3,6 @@
 // @Desc Math operations with safety checks that throw on error
 // https://github.com/OpenZeppelin/zeppelin-solidity/blob/master/contracts/math/SafeMath.sol
 // ----------------------------------------------------------------------------
-/**
- * @title SafeMath
- * @dev Math operations with safety checks that throw on error
- */
 library SafeMath {
   /**
   * @dev Multiplies two numbers, throws on overflow.

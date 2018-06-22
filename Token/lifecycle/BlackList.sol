@@ -2,10 +2,10 @@ pragma solidity ^0.4.24;
 
 import "../ownership/Ownable.sol";
 
-/**
- * @title BlackList
- * @dev Base contract which allows children to implement an emergency stop mechanism.
- */
+// ----------------------------------------------------------------------------
+// @title BlackList
+// @dev Base contract which allows children to implement an emergency stop mechanism.
+// ----------------------------------------------------------------------------
 contract BlackList is Ownable {
 
     /**
@@ -24,26 +24,26 @@ contract BlackList is Ownable {
     }
 
     // Lock Address
-    function SetLockAddress(address _lockaddress) external onlyOwner returns (bool) {
+    function SetLockAddress(address _lockAddress) external onlyOwner returns (bool) {
         require(_lockAddress != address(0));
         require(_lockAddress != owner);
         require(blackList[_lockAddress] != true);
         
         blackList[_lockAddress] = true;
         
-        emit Lock(_lockaddress);
+        emit Lock(_lockAddress);
 
         return true;
     }
 
-    function UnLockAddress(address _unlockaddress) external onlyOwner returns (bool) {
-        require(_unlockaddress != address(0));
-        require(_unlockaddress != owner);
-        require(blackList[_unlockaddress] != false);
+    function UnLockAddress(address _unlockAddress) external onlyOwner returns (bool) {
+        require(_unlockAddress != address(0));
+        require(_unlockAddress != owner);
+        require(blackList[_unlockAddress] != false);
         
-        blackList[_unlockaddress] = false;
+        blackList[_unlockAddress] = false;
         
-        emit Unlock(_unlockaddress);
+        emit Unlock(_unlockAddress);
 
         return true;
     }

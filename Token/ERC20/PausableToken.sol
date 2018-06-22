@@ -4,10 +4,10 @@ import "./StandardToken.sol";
 import "../lifecycle/Pausable.sol";
 import "../lifecycle/BlackList.sol";
 
-/**
- * @title Pausable token
- * @dev StandardToken modified with pausable transfers.
- **/
+// ----------------------------------------------------------------------------
+// @title Pausable token
+// @dev StandardToken modified with pausable transfers.
+// ----------------------------------------------------------------------------
 contract PausableToken is StandardToken, Pausable, BlackList {
 
   function transfer(address _to, uint256 _value) public whenNotPaused CheckBlackList returns (bool) {

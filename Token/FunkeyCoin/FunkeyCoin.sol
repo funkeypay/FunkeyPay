@@ -1,7 +1,7 @@
 pragma solidity ^0.4.24;
 
 // ----------------------------------------------------------------------------
-// @Project FunkeyCoin (FNK)
+// @Project FunkeyCoin (FKC)
 // @Creator Funkey Admin Ryu
 // @Source Code Verification ()
 // ----------------------------------------------------------------------------
