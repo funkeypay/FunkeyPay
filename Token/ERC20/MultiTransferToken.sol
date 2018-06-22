@@ -9,23 +9,27 @@ import "../ownership/Ownable.sol";
 // ----------------------------------------------------------------------------
 contract MultiTransferToken is StandardToken, Ownable {
 
-  function MultiTransfer(address[] _to, uint256[] _amount) onlyOwner public returns (bool) {
-    require(_to.length == _amount.length);
+    function MultiTransfer(address[] _to, uint256[] _amount) onlyOwner public returns (bool) {
+        require(_to.length == _amount.length);
 
-    uint256 ui;
-    uint256 amountSum = 0;
+        uint256 ui;
+        uint256 amountSum = 0;
     
-    for (ui = 0; ui < _to.length; ui++) {
-      require(_to[ui] != address(0));
+        for (ui = 0; ui < _to.length; ui++) {
+            require(_to[ui] != address(0));
 
-      amountSum = amountSum.add(_amount[ui]);
+            amountSum = amountSum.add(_amount[ui]);
+        }
+
+        require(amountSum <= balances[msg.sender]);
+
+        for (ui = 0; ui < _to.length; ui++) {
+            balances[msg.sender] = balances[msg.sender].sub(_amount[ui]);
+            balances[_to[ui]] = balances[_to[ui]].add(_amount[ui]);
+        
+            emit Transfer(msg.sender, _to[ui], _amount[ui]);
+        }
+    
+        return true;
     }
-
-    require(amountSum <= balances[owner]);
-
-    for (ui = 0; ui < _to.length; ui++) {
-      super.transfer(_to[ui], _amount[ui]);
-    }
-    return true;
-  }
 }
