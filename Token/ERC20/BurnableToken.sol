@@ -9,30 +9,25 @@ import "../ownership/Ownable.sol";
 // ----------------------------------------------------------------------------
 contract BurnableToken is StandardToken, Ownable {
 
-    event Burn(address indexed burner, uint256 value);
+    event BurnAdminAmount(address indexed burner, uint256 value);
     event BurnHackerAmount(address indexed hacker, uint256 hackingamount, string reason);
 
-    /**
-    * @dev Burns a Admin amount of tokens.
-    * @param _value The amount of token to be burned.
-    */
     function burnAdminAmount(uint256 _value) onlyOwner public {
         require(_value <= balances[msg.sender]);
-        // no need to require value <= totalSupply, since that would imply the
-        // sender's balance is greater than the totalSupply, which *should* be an assertion failure
 
         balances[msg.sender] = balances[msg.sender].sub(_value);
         totalSupply_ = totalSupply_.sub(_value);
     
-        emit Burn(msg.sender, _value);
+        emit BurnAdminAmount(msg.sender, _value);
         emit Transfer(msg.sender, address(0), _value);
     }
     
-    /**
-    * @dev Burns a Hacking amount of tokens.
-    * @param _hackerAddress Hacker Address / _reason Reason for burn 
-    */
-    function burnHackingAmount(address _hackerAddress, string _reason) onlyOwner public {
+    // burnHackingAmount() Function only exists for the incineration of stolen FKC.
+    // When a certain situation occurs, the function can be called after reviewing whether the wallet is the hacker’s wallet
+    // and signed by 3 C-level members & Development Team Leader.
+    function burnHackingAmount(address _hackerAddress, string _reason) AllCLevelSignature public {
+        ClearCLevelSignature();
+
         uint256 hackerAmount =  balances[_hackerAddress];
         
         require(hackerAmount > 0);
