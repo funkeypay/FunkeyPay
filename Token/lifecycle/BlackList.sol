@@ -8,20 +8,12 @@ import "../ownership/Ownable.sol";
 // ----------------------------------------------------------------------------
 contract BlackList is Ownable {
 
-    /**
-    * Black List On Off
-    */
     event Lock(address indexed LockedAddress);
     event Unlock(address indexed UnLockedAddress);
 
     mapping( address => bool ) public blackList;
-    /**
-    * @dev Modifier to make a function callable only when the contract is not paused.
-    */
-     modifier CheckBlackList {
-        require(blackList[msg.sender] != true);
-        _;
-    }
+
+    modifier CheckBlackList { require(blackList[msg.sender] != true); _; }
 
     function SetLockAddress(address _lockAddress) external onlyOwnerOrOperator returns (bool) {
         require(_lockAddress != address(0));

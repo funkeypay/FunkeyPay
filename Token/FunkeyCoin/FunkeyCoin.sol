@@ -2,8 +2,8 @@ pragma solidity ^0.4.24;
 
 // ----------------------------------------------------------------------------
 // @Project FunkeyCoin (FKC)
-// @Creator Funkey Admin Ryu
-// @Source Code Verification ()
+// @Creator Gi Hyeok - Ryu
+// @Source Code Verification (CEO : JK JUNG / CTO : SeungWoo KANG)
 // ----------------------------------------------------------------------------
 import "../ERC20/PausableToken.sol";
 import "../ERC20/MintableToken.sol";
