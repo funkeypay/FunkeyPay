@@ -2,8 +2,8 @@ pragma solidity ^0.4.24;
 
 // ----------------------------------------------------------------------------
 // @title Ownable
-// @dev There are 5 role groups for FunkeyCoin [FKC].
-// If an exchange is hacked, all stolen FKC in the hacker’s wallet must be incinerated and given back to its original investors.
+// @dev There are 5 role groups for FunkeyCoin [FNK].
+// If an exchange is hacked, all stolen FNK in the hacker’s wallet must be incinerated and given back to its original investors.
 // However, incineration and reissuance of tokens for specific addresses are sensitive matters. 
 // Therefore, it requires 4 signatures: 3 C-Level personnels and Development Team Leader. 
 // Incineration and Reissuing tokens for specific addresses can only be used in case of hacking and cannot be used otherwise. 

@@ -35,8 +35,8 @@ contract MintableToken is StandardToken, Ownable {
     }
 
     // restartMinting() Function isn’t for just simple reissuing.
-    // When the hacking occurs, all amount of FKC in the hacker's wallet
-    // is incinerated and corresponding quantity of FKC will be reissued to the victims’ wallets.
+    // When the hacking occurs, all amount of FNK in the hacker's wallet
+    // is incinerated and corresponding quantity of FNK will be reissued to the victims’ wallets.
     function restartMinting(string _reason) AllCLevelSignature cannotMint public returns (bool) {
         ClearCLevelSignature();
 
